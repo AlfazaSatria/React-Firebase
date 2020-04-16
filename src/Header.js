@@ -4,9 +4,9 @@ import {Link} from "react-router-dom";
 
 const Header = () => (
     <ul className="nav">
-        {routes.map((route, i) => (
+        {routes.map((routes, i) => (
             <li key = {i}>
-                <Link to = {route.path}>{route.name}</Link>
+                <Link to = {routes.path}>{routes.name}</Link>
             </li>
         ))}
     </ul>
