@@ -45,4 +45,4 @@ const Join = () => {
     );
 };
 
-export default Login;
+export default Join;
