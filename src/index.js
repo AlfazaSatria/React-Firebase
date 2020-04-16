@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
-import { Switch, BrowseRouter as Router, Route } from "react-router-dom";
+import { Switch, BrowserRouter as Router, Route } from "react-router-dom";
 import routes from "./routes.js";
 import Header from "./Header";
 import "./styles.css";
+import * as firebase from "firebase";
+import firebaseConfig from "./firebase.config";
+
+firebase.initializeApp(firebaseConfig);
 
 export const AuthContext = React.createContext(null);
 
@@ -20,18 +24,18 @@ function App() {
           <Switch>
             {routes.map(routes => (
               <Route
-                key={route.path}
-                path={route.path}
-                eact={route.exact}
-                component={route.main}
+                key={routes.path}
+                path={routes.path}
+                eact={routes.exact}
+                component={routes.main}
               />
             ))}
           </Switch>
         </Router>
       </div>
     </AuthContext.Provider>
-  )
-
-  const rootElement = document.getElementById("root");
-  ReactDOM.render(<App />, rootElement);
+  );
 }
+
+const rootElement = document.getElementById("root");
+ReactDOM.render(<App />, rootElement);

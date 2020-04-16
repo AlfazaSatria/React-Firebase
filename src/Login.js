@@ -1,10 +1,10 @@
-import { useState, useContext } from "react";
+import React, { useState, useContext } from "react";
 import {AuthContext} from "./index";
 
 const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [ error, setErrors] = useState("");
+    const [ error] = useState("");
 
     const Auth = useContext(AuthContext);
     const handleForm = e => {
