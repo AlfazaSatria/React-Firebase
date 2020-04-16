@@ -1,17 +1,37 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React, { useState } from "react";
+import ReactDOM from "react-dom";
+import { Switch, BrowseRouter as Router, Route } from "react-router-dom";
+import routes from "./routes.js";
+import Header from "./Header";
+import "./styles.css";
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+export const AuthContext = React.createContext(null);
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+function App() {
+  const [isLoggedIn, setLoggedIn] = useState(false);
+
+  return (
+    <AuthContext.Provider value={{ isLoggedIn, setLoggedIn }}>
+      is logged in? {JSON.stringify(isLoggedIn)}
+      <div classname="App">
+        <Router>
+          <Header />
+
+          <Switch>
+            {routes.map(routes => (
+              <Route
+                key={route.path}
+                path={route.path}
+                eact={route.exact}
+                component={route.main}
+              />
+            ))}
+          </Switch>
+        </Router>
+      </div>
+    </AuthContext.Provider>
+  )
+
+  const rootElement = document.getElementById("root");
+  ReactDOM.render(<App />, rootElement);
+}
