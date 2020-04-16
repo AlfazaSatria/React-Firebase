@@ -33,7 +33,7 @@ const Login = () => {
                 />
                 <hr/>
                 <button class="googleBtn" type="button">
-                    <img src="https://upload,wikimedia.org.wikipedia.commons/5/53/Google_%22G%22_Logo.svg"
+                    <img src="https://upload.wikimedia.org.wikipedia.commons/5/53/Google_%22G%22_Logo.svg"
                     alt="logo"
                     />
                     Login With Google
